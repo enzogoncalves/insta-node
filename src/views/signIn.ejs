@@ -1,61 +1,130 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Se registre no InstaNode!">
-    <title>InstaNode | Registro</title>
-    <link rel="stylesheet" href="/style.css">
-    <script src="/signIn.js" defer></script>
-</head>
-<body>
-    <header>
-        <h1>Insta<span>Node</span></h1>
-    </header>
-    <div class="login-container ">
-        <h2>Se registrar</h2>
-        <form action="/user" method="post" autocomplete="on" class="register-form">
-            <label for="username" class="sr-only">Nome</label>
-            <input type="text" name="username" id="username" placeholder="Nome" required>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Se registre no InstaNode!" />
+        <title>InstaNode | Registro</title>
+        <link rel="stylesheet" href="/style.css" />
+        <script src="/signIn.js" defer></script>
+    </head>
+    <body>
+        <header>
+            <h1>Insta<span>Node</span></h1>
+        </header>
+        <div class="login-container">
+            <h2>Se registrar</h2>
+            <form
+                action="/user"
+                method="post"
+                autocomplete="on"
+                class="register-form"
+            >
+                <label for="username" class="sr-only">Nome</label>
+                <input
+                    type="text"
+                    name="username"
+                    id="username"
+                    placeholder="Nome"
+                    required
+                />
 
-            <label for="age" class="sr-only">Idade</label>
-            <input type="date" name="age" id="age" placeholder="Idade" required>
+                <label for="age" class="sr-only">Idade</label>
+                <input
+                    type="date"
+                    name="age"
+                    id="age"
+                    placeholder="Idade"
+                    required
+                />
 
-            <label for="email" class="sr-only">E-mail</label>
-            <input type="text" name="email" id="email" placeholder="E-mail" required>
+                <label for="email" class="sr-only">E-mail</label>
+                <input
+                    type="text"
+                    name="email"
+                    id="email"
+                    placeholder="E-mail"
+                    required
+                />
 
-            <div>
-                <input type="radio" name="gen" value="masc" id="masc" required>
-                <label for="masc">Masculino</label>
-            </div>
+                <div class="diviser"></div>
 
-            <div>
-                <input type="radio" name="gen" value="fem" id="fem" required>
-                <label for="fem">Feminino</label>
-            </div>       
+                <div class="genders">
+                    <div>
+                        <input
+                            type="radio"
+                            name="gen"
+                            value="masc"
+                            id="masc"
+                            required
+                        />
+                        <label for="masc">Masculino</label>
+                    </div>
 
-            <div>
-                <input type="radio" name="gen" value="other" id="other" required>
-                <label for="other">Outro</label>
-            </div>       
+                    <div>
+                        <input
+                            type="radio"
+                            name="gen"
+                            value="fem"
+                            id="fem"
+                            required
+                        />
+                        <label for="fem">Feminino</label>
+                    </div>
 
-            <textarea name="bios" id="bios" maxlength="200" rows="4" placeholder="Sua Biografia (máximo de 200 caractéres)" required></textarea>
+                    <div>
+                        <input
+                            type="radio"
+                            name="gen"
+                            value="other"
+                            id="other"
+                            required
+                        />
+                        <label for="other">Outro</label>
+                    </div>
+                </div>
 
-            <label for="password" class="sr-only">Crie uma senha</label>
-            <input type="password" name="password" id="password" placeholder="Crie sua senha" minlength="6" required>
-            
-            <label for="verify_password" class="sr-only">Confirme a sua senha</label>
-            <input type="password" name="verify_password" id="verify_password" placeholder="Confirme a sua senha" minlength="6" required>
-            <p class="message_error">Se</p>
-            
+                <textarea
+                    name="bios"
+                    id="bios"
+                    maxlength="200"
+                    rows="4"
+                    placeholder="Sua Biografia (máximo de 200 caractéres)"
+                    required
+                ></textarea>
 
-            <button type="submit" class="btn" id="create_account">Criar conta</button> 
-        </form>
-        <p>ou</p>
-        <a href="/" class="btn btn_outlined">Fazer login</a>
-    </div>
-    <footer>
-        <p>Feito por Enzo Mateus Gonçalves</p>
-    </footer>
-</body>
+                <label for="password" class="sr-only">Crie uma senha</label>
+                <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    placeholder="Crie sua senha"
+                    minlength="6"
+                    required
+                />
+
+                <label for="verify_password" class="sr-only"
+                    >Confirme a sua senha</label
+                >
+                <input
+                    type="password"
+                    name="verify_password"
+                    id="verify_password"
+                    placeholder="Confirme a sua senha"
+                    minlength="6"
+                    required
+                />
+                <p class="message_error"></p>
+
+                <button type="submit" class="btn" id="create_account">
+                    Criar conta
+                </button>
+            </form>
+            <p>ou</p>
+            <a href="/" class="btn btn_outlined">Fazer login</a>
+        </div>
+        <footer>
+            <p>Feito por Enzo Mateus Gonçalves</p>
+        </footer>
+    </body>
 </html>

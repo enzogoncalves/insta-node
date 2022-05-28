@@ -1,0 +1,22 @@
+{
+  "name": "basico",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "nodemon .",
+    "init-db": "node src/db/init.js"
+  },
+  "author": "Enzo",
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "ejs": "^3.0.2",
+    "express": "^4.17.3",
+    "sqlite": "^4.1.1",
+    "sqlite3": "^5.0.6"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

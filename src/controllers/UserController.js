@@ -130,6 +130,13 @@ module.exports = {
                 if(await bcrypt.compare(req.body.password, user.password)) {
                     await db.run(`UPDATE users SET blockTime = 0 WHERE email = '${email}'`)
                     await db.run(`UPDATE users SET trys = 0 WHERE email = '${email}'`)
+
+                    const isLogs = await db.all(`SELECT isLog FROM users`)
+                    const isLog = await isLogs.some(isLog => isLog.isLog === 1)
+                    if(isLog) {
+                        await db.run(`UPDATE users SET isLog = 0 WHERE isLog = 1`)
+                    }
+
                     await db.run(`UPDATE users SET isLog = 1 WHERE email = '${email}'`)
                     //Renderiza a conta do usuário
                     res.render("user", { username: user.username, email: user.email, age: user.age, gen: user.gen, bios: user.bios})

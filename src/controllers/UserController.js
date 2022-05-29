@@ -93,7 +93,7 @@ module.exports = {
     async login(req, res) {
         // Cria uma conexão com o database
         const db = await Database()
-
+        
         //Função que calcula a quantidade de minutos exata desde 1970 e retorna a quantidade de minutos
         function getTime() {
             const date = new Date()
@@ -101,12 +101,13 @@ module.exports = {
             return time;
         }
 
-        // //Verifica se existe o email no banco de dados
         const email = req.body.email
+
+        // //Verifica se existe o email no banco de dados
         const dbEmails = await db.all(`SELECT email FROM users`)
         const isEmail = await dbEmails.some(dbEmail => dbEmail.email === email)
 
-        if(isEmail) {
+        if(isEmail) {           
             //Verifica a quantidade de tentativas do usuário de inserir a senha
             const trys = await db.get(`SELECT trys FROM users WHERE email = '${email}'`)
 
@@ -129,6 +130,7 @@ module.exports = {
                 if(await bcrypt.compare(req.body.password, user.password)) {
                     await db.run(`UPDATE users SET blockTime = 0 WHERE email = '${email}'`)
                     await db.run(`UPDATE users SET trys = 0 WHERE email = '${email}'`)
+                    await db.run(`UPDATE users SET isLog = 1 WHERE email = '${email}'`)
                     //Renderiza a conta do usuário
                     res.render("user", { username: user.username, email: user.email, age: user.age, gen: user.gen, bios: user.bios})
                 } else 
@@ -153,6 +155,19 @@ module.exports = {
         } else {
                 //Renderiza a mensagem de email não cadastrado
                 res.render("error", { error: "Email não cadastrado" })
+        }      
+    },
+
+    async isLog(req, res) {
+        const db = await Database()
+        const isLogs = await db.all(`SELECT isLog FROM users`)
+        const isLog = await isLogs.some(isLog => isLog.isLog === 1)
+
+        if(isLog) {
+            const user = await db.get(`SELECT * FROM users WHERE isLog = 1`)
+            res.render("user", { username: user.username, email: user.email, age: user.age, gen: user.gen, bios: user.bios})
+        } else {
+            res.render("index");
         }
     }
 }

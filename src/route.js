@@ -7,7 +7,7 @@ const UserController = require('./controllers/UserController')
 //     res.render('index')
 // })
 
-router.get('/', (req, res) => {res.render('index')})
+router.get('/', UserController.isLog)
 router.get('/signIn', (req, res) => res.render('signIn'))
 
 router.post('/user', UserController.create)

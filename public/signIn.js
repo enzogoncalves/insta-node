@@ -51,7 +51,7 @@ function realAge(fullAge) {
 }
 
 function isAge() {
-    if(realAge(age_input.value) >= 120) {
+    if(realAge(age_input.value) >= 120 && realAge(age_input.value) <= 6) {
         confirm("Idade não aceita");
         btn_create.disabled = true;
     }

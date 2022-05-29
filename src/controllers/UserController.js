@@ -167,7 +167,15 @@ module.exports = {
             const user = await db.get(`SELECT * FROM users WHERE isLog = 1`)
             res.render("user", { username: user.username, email: user.email, age: user.age, gen: user.gen, bios: user.bios})
         } else {
-            res.render("index");
+            res.redirect("/login");
         }
+    },
+
+    async logOut(req, res) {
+        const db = await Database();
+        const username = req.params.username
+        await db.run(`UPDATE users SET isLog = 0 WHERE username = '${username}'`)
+
+        res.redirect('/')
     }
 }

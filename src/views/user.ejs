@@ -13,5 +13,9 @@
     <h1>Email do usuário: <%= email %></h1>
     <h1>Gênero do usuário: <%= gen %></h1>
     <h1>Biografia do usuário: <%= bios %></h1>
+
+    <form action="/logOut/<%= username %>" method="get">
+        <button type="submit">Sair</button>
+    </form>
 </body>
 </html>

@@ -3,13 +3,19 @@ const router = express.Router();
 const UserController = require('./controllers/UserController')
 
 
-router.get('/login', (req, res) => res.render("index"))
-router.get('/', UserController.isLog)
 
-router.get('/signIn', (req, res) => res.render('signIn'))
+//Cadastro
+router.get('/create-account', (req, res) => res.render('signIn'))
+router.post('/create-account', UserController.create)
+
+//Login
+router.get('/login', (req, res) => res.render("index"))
+router.post('/login', UserController.login)
+router.get('/isLog', UserController.isLog)
 router.get('/logOut/:username', UserController.logOut)
 
-router.post('/user', UserController.create)
-router.post('/login', UserController.login)
+//Usuário
+router.get('/user/:username', UserController.user)
+
 
 module.exports = router;

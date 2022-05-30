@@ -86,7 +86,7 @@ module.exports = {
             await db.close()
             
             //Redireciona para a página de login
-            res.redirect('/')
+            res.redirect('/isLog')
         }
     },
     
@@ -139,7 +139,7 @@ module.exports = {
 
                     await db.run(`UPDATE users SET isLog = 1 WHERE email = '${email}'`)
                     //Renderiza a conta do usuário
-                    res.render("user", { username: user.username, email: user.email, age: user.age, gen: user.gen, bios: user.bios})
+                    res.redirect(`user/${user.username}`)
                 } else 
                 {
                     //Atualiza o número de tentativas para + 1
@@ -172,7 +172,7 @@ module.exports = {
 
         if(isLog) {
             const user = await db.get(`SELECT * FROM users WHERE isLog = 1`)
-            res.render("user", { username: user.username, email: user.email, age: user.age, gen: user.gen, bios: user.bios})
+            res.redirect(`user/${user.username}`)
         } else {
             res.redirect("/login");
         }
@@ -183,6 +183,16 @@ module.exports = {
         const username = req.params.username
         await db.run(`UPDATE users SET isLog = 0 WHERE username = '${username}'`)
 
-        res.redirect('/')
+        res.redirect('/login')
+    },
+
+    async user(req, res) {
+        const db = await Database();
+
+        const username = req.params.username.replace('%20', '');
+
+        const user = await db.get(`SELECT * FROM users WHERE username = '${username}'`)
+
+        res.render("user", { username: user.username, email: user.email, age: user.age, gen: user.gen, bios: user.bios})
     }
 }

@@ -10,6 +10,7 @@ router.post('/create-account', UserController.create)
 
 //Login
 router.get('/login', (req, res) => res.render("index"))
+router.get('/', UserController.isLog)
 router.post('/login', UserController.login)
 router.get('/isLog', UserController.isLog)
 router.get('/logOut/:username', UserController.logOut)

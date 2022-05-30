@@ -9,9 +9,9 @@ module.exports = {
 
         //Valores digitados pelo usuário na hora do cadastro
         const username = req.body.username;
+        const fullName = req.body.fullName;
         const fullAge = req.body.age;
         const email = req.body.email;
-        const gen = req.body.gen;
         const bios = req.body.bios;
         const hashedPassword = await bcrypt.hash(req.body.password, 10);
 
@@ -64,9 +64,9 @@ module.exports = {
                 trys,
                 blockTime,
                 username,
-                age,
+                fullName,
                 email,
-                gen,
+                age,
                 bios
             ) VALUES (
                 ${parseInt(userId)},
@@ -75,9 +75,9 @@ module.exports = {
                 0,
                 0,
                 "${username}",
-                ${realAge(fullAge)},
+                "${fullName}",
                 "${email}",
-                "${gen}",
+                ${realAge(fullAge)},
                 "${bios}"
             )`
             )
@@ -86,7 +86,7 @@ module.exports = {
             await db.close()
             
             //Redireciona para a página de login
-            res.redirect('/isLog')
+            res.redirect('/login')
         }
     },
     
@@ -189,10 +189,10 @@ module.exports = {
     async user(req, res) {
         const db = await Database();
 
-        const username = req.params.username.replace('%20', '');
+        const username = req.params.username;
 
         const user = await db.get(`SELECT * FROM users WHERE username = '${username}'`)
 
-        res.render("user", { username: user.username, email: user.email, age: user.age, gen: user.gen, bios: user.bios})
+        res.render("user", { username: user.username, fullName: user.fullName, email: user.email, age: user.age, bios: user.bios})
     }
 }

@@ -20,12 +20,12 @@
                 autocomplete="on"
                 class="register-form"
             >
-                <label for="username" class="sr-only">Nome</label>
+                <label for="fullName" class="sr-only">Nome completo</label>
                 <input
                     type="text"
-                    name="username"
-                    id="username"
-                    placeholder="Nome"
+                    name="fullName"
+                    id="fullName"
+                    placeholder="Nome completo"
                     required
                 />
 
@@ -49,40 +49,17 @@
 
                 <div class="diviser"></div>
 
-                <div class="genders">
-                    <div>
-                        <input
-                            type="radio"
-                            name="gen"
-                            value="masc"
-                            id="masc"
-                            required
-                        />
-                        <label for="masc">Masculino</label>
-                    </div>
-
-                    <div>
-                        <input
-                            type="radio"
-                            name="gen"
-                            value="fem"
-                            id="fem"
-                            required
-                        />
-                        <label for="fem">Feminino</label>
-                    </div>
-
-                    <div>
-                        <input
-                            type="radio"
-                            name="gen"
-                            value="other"
-                            id="other"
-                            required
-                        />
-                        <label for="other">Outro</label>
-                    </div>
-                </div>
+                
+                <label for="username" class="sr-only">Nome de usuário</label>
+                <input
+                    type="text"
+                    name="username"
+                    id="username"
+                    placeholder="Nome de usuário"
+                    required
+                    maxlength="30"
+                />
+                
 
                 <textarea
                     name="bios"
@@ -90,7 +67,6 @@
                     maxlength="200"
                     rows="4"
                     placeholder="Sua Biografia (máximo de 200 caractéres)"
-                    required
                 ></textarea>
 
                 <label for="password" class="sr-only">Crie uma senha</label>
@@ -100,6 +76,7 @@
                     id="password"
                     placeholder="Crie sua senha"
                     minlength="6"
+                    maxlength="50"
                     required
                 />
 
@@ -112,6 +89,7 @@
                     id="verify_password"
                     placeholder="Confirme a sua senha"
                     minlength="6"
+                    maxlength="50"
                     required
                 />
                 <p class="message_error"></p>

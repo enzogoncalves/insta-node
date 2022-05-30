@@ -12,9 +12,9 @@ const initDb = {
                 trys INTEGER,
                 blockTime INTEGER,
                 username TEXT,
-                age INTEGER,
+                fullName TEXT,
                 email TEXT,
-                gen TEXT,
+                age INTEGER,
                 bios TEXT
             )
         `);

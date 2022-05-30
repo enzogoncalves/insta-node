@@ -146,13 +146,6 @@ form.register-form .diviser {
     background-color: var(--main-color);
 }
 
-.genders {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    align-items: center;
-}
-
 .login-container form.register-form textarea {
     width: 100%;
     resize: none;

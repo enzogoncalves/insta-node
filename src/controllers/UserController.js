@@ -191,6 +191,12 @@ module.exports = {
 
         const username = req.params.username;
 
+        const isLog = await db.get(`SELECT isLog FROM users WHERE username = '${username}'`) 
+
+        if(isLog !== 1) {
+            return res.render("error", { error: "Não está logado no momento" })
+        }
+
         const user = await db.get(`SELECT * FROM users WHERE username = '${username}'`)
 
         res.render("user", { username: user.username, fullName: user.fullName, email: user.email, age: user.age, bios: user.bios})
